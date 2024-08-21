@@ -4,7 +4,7 @@
 }
 
 body {
-  background: #ffe5d9;
+  background: #1b263b;
   font-family: "Poppins", sans-serif;
   margin-bottom: 50px;
   margin: 0 0 50px 0;
@@ -55,14 +55,14 @@ ul {
 
 ul li {
   background-color: #fff;
-  border: 1px solid #dbe5e6;
   margin: 20px;
   width: 350px;
   border-bottom: 4px solid #f08080;
   overflow: hidden;
 }
 ul li:hover {
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 8px 8px hsla(0, 0%, 0%, 0.38);
+  border-bottom: 4px solid #f88379;
 }
 
 ul li a {
