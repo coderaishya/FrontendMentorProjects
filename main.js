@@ -4,7 +4,11 @@ const projects = [
 		github:
 			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/faq-accordin'
 	},
-   
+	{
+		name: 'comments-section',
+		github:
+			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/faq-accordin'
+	},
 	
 ];
 
