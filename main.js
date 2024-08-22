@@ -5,9 +5,14 @@ const projects = [
 			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/faq-accordin'
 	},
 	{
+		name: 'random-advice-generator',
+		github:
+			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/random-advice-generator'
+	},
+	{
 		name: 'comments-section',
 		github:
-			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/faq-accordin'
+			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/comments-section'
 	},
 	
 ];

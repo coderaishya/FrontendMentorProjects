@@ -1,0 +1,149 @@
+/* Light-theme ------------------------------------------------ */
+body.light-theme {
+    background-color: var(--very-light-gray);
+    color: var(--grayish-blue);
+}
+
+.light-theme .toggle-container {
+    background-color: var(--very-light-gray);
+}
+
+/* Common button styles */
+.light-theme .send-button {
+    color: var(--white);
+}
+
+/* Font styles*/
+.light-theme .score {
+    color: var(--moderate-blue);
+}
+
+.light-theme .username {
+    color: var(--dark-blue);
+}
+
+.light-theme .username:hover {
+    color: var(--grayish-blue);
+}
+
+.light-theme .dot-symbol,
+.light-theme .time {
+    color: var(--gray2);
+}
+
+.light-theme #current-user-indicator {
+    color: var(--white);
+}
+
+.light-theme .comment-content > strong {
+    color: var(--moderate-blue);
+}
+
+.light-theme #delete-comment-msg {
+    color: var(--grayish-blue);
+}
+
+/* Comments container -------------------------------------------- */
+.light-theme .replies-to-comments-container::before {
+    border-left: 2px solid var(--light-gray);
+}
+
+.light-theme .comments-sub-container,
+.light-theme .replies-to-comments-sub-container {
+    background-color: var(--white);
+}
+
+.light-theme .vote-button {
+    filter: none;
+}
+
+.light-theme .vote-button:hover {
+    filter: invert(41%) sepia(30%) saturate(1298%) hue-rotate(201deg) brightness(80%) contrast(89%) !important;
+}
+
+.light-theme .score-box {
+    background-color: var(--very-light-gray);;
+}
+
+.light-theme .user-avatar:hover {
+    outline: 1px solid var(--moderate-blue);
+}
+
+.light-theme .icon-reply,
+.light-theme .icon-delete,
+.light-theme .icon-edit {
+    filter: none;
+}
+
+.light-theme .delete-button {
+    color: var(--soft-red);
+}
+
+.light-theme .reply-icon-button,
+.light-theme .edit-button {
+    color: var(--moderate-blue);
+}
+
+
+/* Add container ------------------------------------------------- */
+.light-theme .add-form {
+    background-color: var(--white);
+}
+
+.light-theme .input-box {
+    caret-color: var(--grayish-blue);
+    color: var(--grayish-blue);
+    border-color: var(--light-gray);
+    outline-color: var(--gray3);
+}
+
+.light-theme .send-button:is(:hover,:focus) {
+    filter: none;
+    opacity: 0.7; 
+}
+
+/* Delete container --------------------------------------------- */
+.light-theme .delete-comment-container {
+    background-color: hsla(0, 0%, 0%, 0.5);
+    color: var(--dark-blue);
+}
+
+.light-theme #delete-comment-box {
+    background-color: var(--white);
+}
+
+.light-theme #no-cancel-button,
+.light-theme #yes-delete-button {
+    color: var(--white);
+}
+
+.light-theme #no-cancel-button {
+    background-color: var(--grayish-blue);
+}
+
+/* Day-night toggle switch --------------------------------------- */
+.light-theme #toggle-label {
+    border: 1px solid var(--gray2);
+}
+
+.light-theme #toggle-label:hover {
+    background-color: var(--light-gray);
+}
+
+.light-theme #toggle-label::after {
+    background-color: var(--gray);
+}
+
+.light-theme #icon-dark {
+    filter: invert(100%) brightness(130%);
+}
+
+/* Menu toggle --------------------------------------------------- */
+.light-theme .menu-item,
+.light-theme .menu-open-button {
+    background: var(--gray);
+}
+
+.light-theme .lines {
+    background: var(--gray);
+}

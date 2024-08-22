@@ -1,0 +1,100 @@
+@media screen and (min-width: 600px) {
+    /* Body & main styles */
+    body {
+        padding: 4rem 1rem 2rem 1rem;
+    }
+
+    main {
+        gap: 1.5rem;
+        height: 100%;
+        min-width: var(--r600);
+        max-width: var(--r730);
+    }
+
+    .toggle-container {
+        height: 3.5rem;
+    }
+
+    .all-comments-container {
+        gap: 1.5rem;
+    }
+
+    /* Font styles*/
+    .score {
+        padding-top: 0.25rem;
+    }
+    
+    /* Comments container -------------------------------------------- */
+    .replies-to-comments-container {
+        gap: 1.5rem;
+        padding-left: 2.75rem;
+        margin-left: 2.75rem;
+    }
+
+    .comments-container {
+        gap: 1.5rem;
+    }
+
+    .comments-sub-container,
+    .replies-to-comments-sub-container {
+        border-radius: 1rem;
+        grid-template-columns: 2.5rem 1fr auto;
+        column-gap: 1.5rem;
+        row-gap: var(--r15);
+        grid-template-areas: 
+            "scorebox comment-header reply-btn"
+            "scorebox comment-content comment-content";
+        padding: 1.5rem;
+    }
+
+    .score-box {
+        flex-direction: column;
+        height: 6.25rem;
+        width: 100%;
+        padding: var(--r12) 5px;
+    }
+
+    .downvote {
+        padding-bottom: 6px;
+    }
+
+    /* Add container ------------------------------------------------- */
+    .add-form {
+        border-radius: 1rem;
+        grid-template-columns: 2.5rem 1fr auto;
+        column-gap: 1rem;
+        row-gap: 1rem;
+        grid-template-areas: 
+            "user-avatar input-box send-btn"
+            ". input-box . ";
+    }
+
+    .user-avatar.current {
+        height: 2.5rem;
+    }
+
+    .send-button {
+        align-self: flex-start;
+    }
+
+    /* Delete container --------------------------------------------- */
+    .delete-comment-container {
+        padding: 0;
+    }
+
+    #delete-comment-box {
+        border-radius: var(--r10);
+        gap: var(--r20);
+        padding: 2rem;
+        width: 25rem;
+    }
+
+    #delete-button-grp {
+        gap: var(--r14);
+    }
+
+    /* Day-night toggle switch ---------------------------------------- */
+    #day-night-toggle {
+        top: 1rem;
+    }
+}

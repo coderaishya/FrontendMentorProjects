@@ -1,18 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Comments Section</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-        <main>
-        
-        </main>
 
-	<script src="index.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Interactive comments section</title>
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/light_theme.css">
+  <link rel="stylesheet" href="css/tablet_desktop.css">
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+
+<body>
+  <header class="toggle-container">
+    <div id="day-night-toggle">
+      <img id="icon-dark" src="images/icon-dark-mode.svg" alt="icon-moon">
+      <div id="toggle-switch">
+        <input type="checkbox" id="toggle">
+        <label for="toggle" id="toggle-label"></label>
+      </div>
+      <img id="icon-light" src="images/icon-light-mode.svg" alt="icon-sun">
+    </div>
+
+    <nav class="menu">
+      <!-- menu avatars generated thr menu_avatar.js -->
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="title">Comments</h1>
+
+    <div class="all-comments-container">
+      <!-- content generated thr script.js -->
+    </div>
+
+    <div class="delete-comment-container">
+      <div id="delete-comment-box">
+        <p id="delete-comment-heading">Delete Comment</p>
+        <p id="delete-comment-msg">Are you sure you want to delete this comment? This will remove the comment and can't be undone.</p>
+        <div id="delete-button-grp">
+          <button type="button" class="next-action-button" id="no-cancel-button" aria-label="Cancel Comment">No, cancel</button>
+          <button type="button" class="next-action-button" id="yes-delete-button" aria-label="Delete Comment">Yes, delete</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+  <!-- <script type="module" src="./src/js/color_theme.js"></script> -->
+</body>
+
 </html>

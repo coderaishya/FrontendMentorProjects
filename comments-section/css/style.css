@@ -1,8 +1,487 @@
-@import url("https://fonts.googleapis.com/css2?family=Playwrite+BE+WAL:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-body {
-  background: #f5f6fa;
-  height: 100vh;
-  padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  font-family: "Work Sans", sans-serif;
+  padding: 0;
+}
+
+:root {
+  /* Default font styles */
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--gray3);
+  /* Primary */
+  --moderate-blue: hsl(238, 40%, 52%);
+  --soft-red: hsl(358, 79%, 66%);
+  --light-grayish-blue: hsl(239, 57%, 85%);
+  --pale-red: hsl(357, 100%, 86%);
+  /* Neutral */
+  --almost-black: hsl(0, 0%, 10%);
+  --very-dark-gray: hsl(0, 0%, 15%);
+  --dark-gray: hsl(0, 0%, 30%);
+  --gray: hsl(0, 1%, 36%);
+  --gray2: hsl(0, 0%, 50%);
+  --gray3: hsl(0, 0%, 70%);
+  --dark-blue: hsl(212, 24%, 26%);
+  --grayish-blue: hsl(211, 10%, 45%);
+  --light-gray: hsl(223, 19%, 93%);
+  --very-light-gray: hsl(228, 33%, 97%);
+  --white: hsl(0, 0%, 100%);
+}
+
+html {
+  --r730: calc((730 / var(--base) * 1rem));
+  --r600: calc((600 / var(--base) * 1rem));
+  --r30: calc((30 / var(--base) * 1rem));
+  --r20: calc((20 / var(--base) * 1rem));
+  --r19: calc((19 / var(--base) * 1rem));
+  --r15: calc((15 / var(--base) * 1rem));
+  --r14: calc((14 / var(--base) * 1rem));
+  --r12: calc((12 / var(--base) * 1rem));
+  --r10: calc((10 / var(--base) * 1rem));
+  --base: 16;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Inherit fonts */
+input,
+button,
+textarea {
+  font: inherit;
+}
+
+/* Body, main, toggle-container and all-comments container styles */
+body, main, .all-comments-container {
+  display: grid;
+  place-content: center;
+}
+
+body {
+  background-color: var(--almost-black);
+  min-height: 100svh;
+  padding: 5.5rem 1rem;
+}
+
+main {
+  gap: 1rem;
+  width: 100%;
+}
+
+.toggle-container {
+  background-color: var(--almost-black);
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 5rem;
+  width: 100%;
+}
+
+.all-comments-container {
+  gap: 1rem;
+}
+
+/* Common button styles */
+button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:is(:hover):not(.send-button, #no-cancel-button, #yes-delete-button) {
+  filter: brightness(200%);
+}
+
+/* Font styles*/
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.score {
+  color: var(--light-gray);
+  font-weight: 500;
+  line-height: var(--r19);
+}
+
+.username {
+  color: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.username:hover {
+  color: var(--white);
+}
+
+.dot-symbol,
+.time {
+  color: var(--gray2);
+  font-size: var(--r14);
+}
+
+#current-user-indicator {
+  background-color: var(--moderate-blue);
+  border-radius: 0.25rem;
+  color: var(--light-gray);
+  font-weight: 500;
+  font-size: var(--r12);
+  line-height: 1rem;
+  padding: 1px 6px 2px 6px;
+}
+
+#delete-comment-heading {
+  font-weight: 500;
+  font-size: var(--r20);
+}
+
+#delete-comment-msg {
+  color: var(--gray3);
+}
+
+/* Comments container -------------------------------------------- */
+.replies-to-comments-container {
+  display: grid;
+  gap: 1rem;
+  position: relative;
+  padding-left: 1rem 0 0 1.25rem;
+  margin-left: 0.25rem;
+}
+
+.replies-to-comments-container::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  border-left: 2px solid var(--very-dark-gray);
+  height: 95%;
+}
+
+.comments-container {
+  display: grid;
+  gap: 1rem;
+}
+
+.comments-sub-container,
+.replies-to-comments-sub-container {
+  background-color: var(--very-dark-gray);
+  border-radius: var(--r12);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  -moz-column-gap: 0;
+       column-gap: 0;
+  row-gap: 1rem;
+  grid-template-areas: "comment-header comment-header comment-header" "comment-content comment-content comment-content" "scorebox . reply-btn";
+  padding: 1rem;
+  position: relative; /* to position the pop-up msg */
+}
+
+.vote-button {
+  filter: grayscale(100%) brightness(70%);
+}
+
+.score-box {
+  grid-area: scorebox;
+  background-color: var(--dark-gray);
+  border-radius: var(--r10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.5rem;
+  width: 6.25rem;
+  padding: var(--r10) var(--r12) var(--r10) var(--r15);
+}
+
+.downvote {
+  padding-bottom: 6px;
+}
+
+.moderate-blue {
+  filter: invert(41%) sepia(30%) saturate(1298%) hue-rotate(201deg) brightness(80%) contrast(89%) !important;
+}
+
+.comment-header {
+  grid-area: comment-header;
+  display: flex;
+  align-items: center;
+  gap: var(--r10);
+}
+
+.user-avatar-link {
+  height: 2rem;
+}
+
+.user-avatar {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  height: 2rem;
+  margin-right: 0.25rem;
+  transition: all 0.2s ease-in;
+}
+
+.user-avatar:hover {
+  border: none;
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  padding: 2px;
+  scale: 1.2;
+}
+
+.reply-icon-button,
+.delete-button,
+.edit-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--r14);
+  font-weight: 500;
+}
+
+.reply-icon-button,
+#delete-or-edit-button-grp {
+  grid-area: reply-btn;
+}
+
+#delete-or-edit-button-grp {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-reply,
+.icon-edit {
+  filter: grayscale(100%) brightness(170%);
+  scale: 0.95;
+}
+
+.icon-delete {
+  filter: grayscale(100%) brightness(130%);
+  scale: 0.95;
+}
+
+.comment-content {
+  grid-area: comment-content;
+}
+
+#editable-content {
+  grid-area: comment-content !important;
+}
+
+/* Update-form */
+.update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#update-button {
+  align-self: flex-end;
+}
+
+/* Add container ------------------------------------------------- */
+.add-container {
+  position: relative; /* to position the pop-up msg */
+}
+
+.add-form {
+  background-color: var(--very-dark-gray);
+  border-radius: var(--r12);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr auto;
+  -moz-column-gap: 0;
+       column-gap: 0;
+  row-gap: 1rem;
+  grid-template-areas: "input-box input-box input-box" "user-avatar . send-btn";
+  padding: 1.5rem;
+}
+
+.user-avatar.current {
+  grid-area: user-avatar;
+  align-self: center;
+  height: 2rem;
+}
+
+.input-box {
+  grid-area: input-box;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  caret-color: var(--gray3);
+  color: var(--gray3);
+  cursor: pointer;
+  padding: var(--r12) 1.5rem;
+  width: 100%;
+}
+
+.send-button {
+  grid-area: send-btn;
+  background-color: var(--moderate-blue);
+  border-radius: 0.5rem;
+  color: var(--light-gray);
+  font-weight: 500;
+  padding: var(--r12) var(--r30);
+  text-transform: uppercase;
+}
+
+.send-button:is(:hover, :focus) {
+  filter: brightness(140%);
+  scale: 0.99;
+}
+
+/* Delete container --------------------------------------------- */
+.delete-comment-container {
+  background-color: hsla(0, 0%, 10%, 0.7);
+  color: var(--light-gray);
+  display: none;
+  place-content: center;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+#delete-comment-box {
+  background-color: var(--dark-gray);
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+#delete-button-grp {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--r12);
+}
+
+#no-cancel-button,
+#yes-delete-button {
+  border-radius: 0.5rem;
+  color: var(--very-light-gray);
+  padding: var(--r12) 0;
+  text-transform: uppercase;
+}
+
+#no-cancel-button {
+  background-color: var(--gray2);
+}
+
+#yes-delete-button {
+  background-color: var(--soft-red);
+}
+
+#no-cancel-button:is(:hover, :focus),
+#yes-delete-button:is(:hover, :focus) {
+  filter: brightness(140%);
+}
+
+/* Popup container --------------------------------------------- */
+.popup {
+  position: absolute;
+  top: 0;
+  left: 5rem;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  width: 10rem;
+  background-color: var(--soft-red);
+  color: var(--white);
+  font-size: var(--r14);
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.35rem 0;
+  position: absolute;
+  z-index: 1;
+  bottom: -0.5rem;
+  left: -4.5rem;
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.popup.fade-out .popuptext {
+  opacity: 0;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -0.4rem;
+  border-width: 0.4rem;
+  border-style: solid;
+  border-color: var(--soft-red) transparent transparent transparent;
+}
+
+/* Day-night toggle switch ---------------------------------------- */
+#day-night-toggle {
+  position: fixed;
+  top: 1.8rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: var(--r10);
+}
+
+#toggle-switch {
+  height: var(--r20);
+  width: 2.5rem;
+  font-size: 0;
+}
+
+input[type=checkbox] {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+#toggle-label {
+  background-color: transparent;
+  border: 1px solid var(--gray3);
+  border-radius: var(--r12);
+  cursor: pointer;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transition: 0.5s;
+}
+
+#toggle-label:hover {
+  background-color: var(--dark-gray);
+}
+
+#toggle-label::after {
+  content: "";
+  background-color: var(--white);
+  height: var(--r12);
+  width: var(--r12);
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 6px);
+  left: 4px;
+  transition: 0.5s;
+}
+
+input:checked + #toggle-label:after {
+  transform: translateX(160%);
+}
+
+#icon-dark {
+  filter: invert(100%) brightness(150%);
 }/*# sourceMappingURL=style.css.map */
