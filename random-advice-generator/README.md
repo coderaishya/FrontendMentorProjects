@@ -4,7 +4,7 @@
 
 ## Welcome! 👋
 
-This challenge is built with HTML,Css and Javascript. It uses  the [Advice Slip API](https://api.adviceslip.com)
+This challenge is built with HTML,Css and Javascript. It uses  the [Advice Slip API](https://api.adviceslip.com) for displaying the data of Random quotes
 
 ## Links
 
