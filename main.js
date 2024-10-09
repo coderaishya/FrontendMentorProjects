@@ -14,6 +14,11 @@ const projects = [
 		github:
 			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/comments-section'
 	},
+	{
+		name: 'bento-grid',
+		github:
+			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/bento-grid'
+	},
 	
 ];
 

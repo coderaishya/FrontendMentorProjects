@@ -1,6 +1,6 @@
-# Frontend Mentor - FAQ accordion
+# Frontend Mentor - Comments Section
 
-![Design preview for the FAQ accordion coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Comments Section coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
 
