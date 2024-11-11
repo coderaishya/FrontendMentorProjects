@@ -5,4 +5,4 @@ FrontendMentor Challenges Solution:
 
 3) [Comments Section](https://coderaishya.github.io/FrontendMentorProjects/comments-section/index.html)
 
-4) [Random Advice Generator](https://coderaishya.github.io/FrontendMentorProjects/bento-grid/index.html)
+4) [Bento Grid](https://coderaishya.github.io/FrontendMentorProjects/bento-grid/index.html)
