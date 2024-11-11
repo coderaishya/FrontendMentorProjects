@@ -1,5 +1,10 @@
 const projects = [
 	{
+		name: 'multi-step-form',
+		github:
+			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/multi-step-form'
+	},
+	{
 		name: 'faq-accordin',
 		github:
 			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/faq-accordin'
@@ -18,7 +23,7 @@ const projects = [
 		name: 'bento-grid',
 		github:
 			'https://github.com/coderaishya/FrontendMentorProjects/tree/master/bento-grid'
-	},
+	}
 	
 ];
 
