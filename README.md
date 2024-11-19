@@ -1,5 +1,5 @@
 FrontendMentor Challenges Solution:
-1) [Multi Step form](https://coderaishya.github.io/FrontendMentorProjects/multi-step-form/index.html)
+1) [Multi Step](https://github.com/coderaishya/FrontendMentorProjects/tree/master/multi-step-form)
 
 2) [FAQ Accordin](https://coderaishya.github.io/FrontendMentorProjects/faq-accordin/index.html)
 
